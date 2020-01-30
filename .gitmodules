@@ -1,0 +1,12 @@
+[submodule "currency-converter"]
+	path = currency-converter
+	url = https://github.com/andreib17/currency-converter.git
+[submodule "currency-converter-audit"]
+	path = currency-converter-audit
+	url = https://github.com/andreib17/currency-converter-audit.git
+[submodule "currency-converter-eureka"]
+	path = currency-converter-eureka
+	url = https://github.com/andreib17/currency-converter-eureka.git
+[submodule "currency-converter-config"]
+	path = currency-converter-config
+	url = https://github.com/andreib17/currency-converter-config.git

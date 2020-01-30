@@ -1,0 +1,37 @@
+version: '3'
+services:
+  currency-converter-eureka:
+    image: microservice-currency-converter-eureka:0.0.1-SNAPSHOT
+    ports:
+      - 8761:8761
+  currency-converter-config:
+    image: microservice-currency-converter-config:0.0.1-SNAPSHOT
+    volumes:
+      - ./config-data:/var/config-data
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://currency-converter-eureka:8761/eureka
+        -Dspring.cloud.config.server.native.searchLocations=/var/config-data
+    depends_on:
+      - currency-converter-eureka
+    ports:
+      - 8888:8888
+  currancy-converter:
+    image: microservice-currancy-converter:0.0.1-SNAPSHOT
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://currency-converter-eureka:8761/eureka
+    depends_on:
+      - currency-converter-eureka
+      - currency-converter-config
+  currency-converter-audit:
+    image: microservice-currency-converter-audit:0.0.1-SNAPSHOT
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://currency-converter-eureka:8761/eureka
+    restart: on-failure
+    depends_on:
+      - currency-converter-eureka
+      - currency-converter-config
+    ports:
+      - 8101:8101

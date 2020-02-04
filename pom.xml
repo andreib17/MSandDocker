@@ -13,7 +13,7 @@
 	<modules>
 		<module>currency-converter-config</module>
 		<module>currency-converter-eureka</module>
-		<module>scurrancy-converter</module>
-		<module>scurrency-converter-audit</module>
+		<module>currency-converter</module>
+		<module>currency-converter-audit</module>
 	</modules>
 </project>

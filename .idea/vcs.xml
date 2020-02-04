@@ -2,7 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/currancy-converter" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/currency-converter" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/currency-converter-audit" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/currency-converter-config" vcs="Git" />

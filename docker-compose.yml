@@ -1,11 +1,11 @@
 version: '3'
 services:
   currency-converter-eureka:
-    image: microservice-currency-converter-eureka:0.0.1-SNAPSHOT
+    image: microservice-docker-currency-converter-eureka:0.0.1-SNAPSHOT
     ports:
       - 8761:8761
   currency-converter-config:
-    image: microservice-currency-converter-config:0.0.1-SNAPSHOT
+    image: microservice-docker-currency-converter-config:0.0.1-SNAPSHOT
     volumes:
       - ./config-data:/var/config-data
     environment:
@@ -17,7 +17,7 @@ services:
     ports:
       - 8888:8888
   currancy-converter:
-    image: microservice-currancy-converter:0.0.1-SNAPSHOT
+    image: microservice-docker-currancy-converter:0.0.1-SNAPSHOT
     environment:
       - JAVA_OPTS=
         -DEUREKA_SERVER=http://currency-converter-eureka:8761/eureka
@@ -25,7 +25,7 @@ services:
       - currency-converter-eureka
       - currency-converter-config
   currency-converter-audit:
-    image: microservice-currency-converter-audit:0.0.1-SNAPSHOT
+    image: microservice-docker-currency-converter-audit:0.0.1-SNAPSHOT
     environment:
       - JAVA_OPTS=
         -DEUREKA_SERVER=http://currency-converter-eureka:8761/eureka

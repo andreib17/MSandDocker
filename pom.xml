@@ -11,8 +11,7 @@
 	<name>parent-project</name>
 
 	<modules>
-		<module>currency-converter-config</module>
-		<module>currency-converter-eureka</module>
+		<module>discovery</module>
 		<module>currency-converter</module>
 		<module>currency-converter-audit</module>
 	</modules>

@@ -1,37 +1,25 @@
 version: '3'
 services:
-  currency-converter-eureka:
-    image: microservice-docker-currency-converter-eureka:0.0.1-SNAPSHOT
+  discovery:
+    image: microservice-docker-discovery:0.0.1-SNAPSHOT
     ports:
-      - 8761:8761
-  currency-converter-config:
-    image: microservice-docker-currency-converter-config:0.0.1-SNAPSHOT
-    volumes:
-      - ./config-data:/var/config-data
+    - 8761:8761
+  currency-converter:
+    image: microservice-docker-currency-converter:0.0.1-SNAPSHOT
     environment:
       - JAVA_OPTS=
-        -DEUREKA_SERVER=http://currency-converter-eureka:8761/eureka
-        -Dspring.cloud.config.server.native.searchLocations=/var/config-data
+        -DEUREKA_SERVER=http://discovery:8761/eureka
     depends_on:
-      - currency-converter-eureka
+      - discovery
     ports:
-      - 8888:8888
-  currancy-converter:
-    image: microservice-docker-currancy-converter:0.0.1-SNAPSHOT
-    environment:
-      - JAVA_OPTS=
-        -DEUREKA_SERVER=http://currency-converter-eureka:8761/eureka
-    depends_on:
-      - currency-converter-eureka
-      - currency-converter-config
+      - 8100:8100
   currency-converter-audit:
     image: microservice-docker-currency-converter-audit:0.0.1-SNAPSHOT
     environment:
       - JAVA_OPTS=
-        -DEUREKA_SERVER=http://currency-converter-eureka:8761/eureka
+        -DEUREKA_SERVER=http://discovery:8761/eureka
     restart: on-failure
     depends_on:
-      - currency-converter-eureka
-      - currency-converter-config
+      - discovery
     ports:
       - 8101:8101
